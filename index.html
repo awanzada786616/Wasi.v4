@@ -2,211 +2,225 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wasi Store ChromeBooks</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wasi Store Chromebooks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
+      background: linear-gradient(to bottom right, #e0f7fa, #e3f2fd);
     }
-    header {
+    .header {
       text-align: center;
-      background-color: #fff;
-      padding: 10px;
+      margin: 20px 0;
     }
-    header img {
-      max-width: 300px;
+    .header img {
+      max-width: 200px;
     }
-    .banner {
+    .banner img {
       width: 100%;
-      max-height: 250px;
-      object-fit: cover;
-      display: block;
+      height: auto;
     }
-    h2 {
-      text-align: center;
-      color: #222;
-      font-size: 2em;
-      margin-top: 20px;
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .title-container img {
+      width: 30px;
+      height: auto;
+    }
+    h1.title {
+      font-size: 24px;
+      margin: 0;
     }
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       padding: 20px;
-      max-width: 1200px;
-      margin: auto;
     }
     .product {
-      background: #fff;
+      background: white;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       padding: 15px;
       text-align: center;
     }
     .product img {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
+      height: 120px;
+      object-fit: contain;
+      margin-top: 10px;
       border-radius: 10px;
-    }
-    .product h3 {
-      font-size: 1.1em;
-      margin: 10px 0;
     }
     .price {
       color: green;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin: 10px 0;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
     .buttons a {
-      display: inline-block;
-      margin: 5px;
-      padding: 10px 15px;
+      padding: 8px 12px;
+      border-radius: 5px;
       text-decoration: none;
       color: white;
-      border-radius: 6px;
+      font-weight: bold;
     }
-    .order-btn { background-color: #28a745; }
-    .details-btn { background-color: #007bff; }
-
-    .live-chat {
+    .order {
+      background-color: #28a745;
+    }
+    .details {
+      background-color: #007bff;
+    }
+    .fixed-chat {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      z-index: 100;
+      z-index: 999;
     }
-    .whatsapp-btn {
+    .fixed-whatsapp {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      z-index: 100;
+      z-index: 999;
     }
     .bottom-center-img {
       position: fixed;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      z-index: 99;
+      z-index: 999;
+    }
+    .bottom-center-img img {
+      width: 50px;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="https://i.postimg.cc/tJFs08X2/20250617-143025.png" alt="Wasi Store Logo" />
-  </header>
-  <img src="https://i.postimg.cc/j2DknNXm/Picsart-25-06-17-14-47-29-257.jpg" class="banner" alt="Banner" />
-  <h2>CHROMEBOOKS</h2>
+
+  <div class="header">
+    <img src="https://i.postimg.cc/tJFs08X2/20250617-143025.png" alt="Logo" />
+  </div>
+
+  <div class="banner">
+    <img src="https://i.postimg.cc/j2DknNXm/Picsart-25-06-17-14-47-29-257.jpg" alt="Banner" />
+  </div>
+
+  <div class="title-container">
+    <img src="https://i.postimg.cc/0ydRvW7c/iphone-x-600x598.png" alt="iPhone">
+    <h1 class="title">CHROMEBOOKS</h1>
+  </div>
+
   <div class="products">
-    <!-- Product 1 -->
+    <!-- Repeat these blocks for each product -->
     <div class="product">
-      <img src="https://i.postimg.cc/dQ94kjzZ/dell-chromebook-laptop-3180-1-768x768.jpg" alt="Product 1">
+      <img src="https://i.postimg.cc/dQ94kjzZ/dell-chromebook-laptop-3180-1-768x768.jpg" alt="Product 1" />
       <h3>Dell | Chromebook 3180 | 16GB | 4GB RAM</h3>
-      <p class="price">Price: 7,900 PKR</p>
+      <div class="price">Price: 7900 PKR</div>
       <div class="buttons">
-        <a class="order-btn" href="https://wa.me/923175768178" target="_blank">Order Now</a>
-        <a class="details-btn" href="https://youtu.be/cIP74ZzQ9t4" target="_blank">View Details</a>
+        <a href="https://wa.me/923175768178" class="order">Order Now</a>
+        <a href="https://youtu.be/cIP74ZzQ9t4?si=pTKZGfIfAHj8Lx-4" class="details">View Details</a>
       </div>
     </div>
 
-    <!-- Product 2 -->
     <div class="product">
-      <img src="https://i.postimg.cc/nVkK3cVX/HP-Chromebook-11-G5-1-768x768-1.jpg" alt="Product 2">
+      <img src="https://i.postimg.cc/nVkK3cVX/HP-Chromebook-11-G5-1-768x768-1.jpg" alt="Product 2" />
       <h3>HP | Chromebook 11 G5 | 16GB | 4GB RAM</h3>
-      <p class="price">Price: 8,400 PKR</p>
+      <div class="price">Price: 8400 PKR</div>
       <div class="buttons">
-        <a class="order-btn" href="https://wa.me/923175768178" target="_blank">Order Now</a>
-        <a class="details-btn" href="https://youtu.be/lrqlqKRSTKQ" target="_blank">View Details</a>
+        <a href="https://wa.me/923175768178" class="order">Order Now</a>
+        <a href="https://youtu.be/lrqlqKRSTKQ?si=hBDd-f3vFFyqro4e" class="details">View Details</a>
       </div>
     </div>
 
-    <!-- Product 3 -->
     <div class="product">
-      <img src="https://i.postimg.cc/pdY0HNMr/Dell-chromebook-p22t-8-768x768-1.jpg" alt="Product 3">
-      <h3>Dell Chromebook 11 | 3120 P22T | 16GB | 4GB RAM</h3>
-      <p class="price">Price: 9,000 PKR</p>
+      <img src="https://i.postimg.cc/pdY0HNMr/Dell-chromebook-p22t-8-768x768-1.jpg" />
+      <h3>Dell Chromebook 11 | 3120 P22T | 4GB | 16GB</h3>
+      <div class="price">Price: 9000 PKR</div>
       <div class="buttons">
-        <a class="order-btn" href="https://wa.me/923175768178" target="_blank">Order Now</a>
-        <a class="details-btn" href="https://youtu.be/onC5Yog81DQ" target="_blank">View Details</a>
+        <a href="https://wa.me/923175768178" class="order">Order Now</a>
+        <a href="https://youtu.be/onC5Yog81DQ?si=RV9QYA0Y8p7nFa_e" class="details">View Details</a>
       </div>
     </div>
 
-    <!-- Product 4 -->
     <div class="product">
-      <img src="https://i.postimg.cc/yNPgmKZF/Lenovo-chromebook-N21-8-768x768.jpg" alt="Product 4">
-      <h3>Lenovo | Chromebook N21 | 16GB | 4GB RAM</h3>
-      <p class="price">Price: 9,000 PKR</p>
+      <img src="https://i.postimg.cc/yNPgmKZF/Lenovo-chromebook-N21-8-768x768.jpg" />
+      <h3>Lenovo | N21 | 4GB RAM | 16GB | Webcam | Win 10</h3>
+      <div class="price">Price: 9000 PKR</div>
       <div class="buttons">
-        <a class="order-btn" href="https://wa.me/923175768178" target="_blank">Order Now</a>
-        <a class="details-btn" href="https://youtu.be/7NnM3YO5U3U" target="_blank">View Details</a>
+        <a href="https://wa.me/923175768178" class="order">Order Now</a>
+        <a href="https://youtu.be/7NnM3YO5U3U?si=MrQcGznE5pXkFFb2" class="details">View Details</a>
       </div>
     </div>
 
-    <!-- Product 5 -->
     <div class="product">
-      <img src="https://i.postimg.cc/7Z0hM2cv/Hp-chromebook-11-g8-EE-2-768x768.jpg" alt="Product 5">
-      <h3>HP Chromebook 11 G8 EE | 32GB | 4GB RAM</h3>
-      <p class="price">Price: 13,000 PKR</p>
+      <img src="https://i.postimg.cc/7Z0hM2cv/Hp-chromebook-11-g8-EE-2-768x768.jpg" />
+      <h3>HP Chromebook 11 G8 EE | 4GB | 32GB | 2027 Updatable</h3>
+      <div class="price">Price: 13000 PKR</div>
       <div class="buttons">
-        <a class="order-btn" href="https://wa.me/923175768178" target="_blank">Order Now</a>
-        <a class="details-btn" href="https://youtu.be/wmOtUUyqEag" target="_blank">View Details</a>
+        <a href="https://wa.me/923175768178" class="order">Order Now</a>
+        <a href="https://youtu.be/wmOtUUyqEag?si=AjTp8LMC0zidTh7X" class="details">View Details</a>
       </div>
     </div>
 
-    <!-- Product 6 -->
     <div class="product">
-      <img src="https://i.postimg.cc/qM5hJ0fR/Lenovo-100e-3rd-gen-10-1-768x768.jpg" alt="Product 6">
-      <h3>Lenovo | Chromebook 100E 3rd Gen | 64GB | 4GB RAM</h3>
-      <p class="price">Price: 13,600 PKR</p>
+      <img src="https://i.postimg.cc/qM5hJ0fR/Lenovo-100e-3rd-gen-10-1-768x768.jpg" />
+      <h3>Lenovo 100E 3rd Gen | 64GB | 4GB | 2031 Updatable</h3>
+      <div class="price">Price: 13600 PKR</div>
       <div class="buttons">
-        <a class="order-btn" href="https://wa.me/923175768178" target="_blank">Order Now</a>
-        <a class="details-btn" href="https://youtu.be/6elrN8qGFzs" target="_blank">View Details</a>
+        <a href="https://wa.me/923175768178" class="order">Order Now</a>
+        <a href="https://youtu.be/6elrN8qGFzs?si=r93MVmVRlsqk4fAE" class="details">View Details</a>
       </div>
     </div>
 
-    <!-- Product 7 -->
     <div class="product">
-      <img src="https://i.postimg.cc/52k25m92/Lenovo-500-E-4-768x768.jpg" alt="Product 7">
-      <h3>Lenovo 500E 2nd Gen | 32GB | 4GB RAM | Touch</h3>
-      <p class="price">Price: 16,000 PKR</p>
+      <img src="https://i.postimg.cc/52k25m92/Lenovo-500-E-4-768x768.jpg" />
+      <h3>Lenovo 500E 2nd Gen | 2in1 | Touch | 32GB | 4GB</h3>
+      <div class="price">Price: 16000 PKR</div>
       <div class="buttons">
-        <a class="order-btn" href="https://wa.me/923175768178" target="_blank">Order Now</a>
-        <a class="details-btn" href="https://youtu.be/hoq2DEB832A" target="_blank">View Details</a>
+        <a href="https://wa.me/923175768178" class="order">Order Now</a>
+        <a href="https://youtu.be/hoq2DEB832A?si=DujTdmmlYtqOfpCt" class="details">View Details</a>
       </div>
     </div>
 
-    <!-- Product 8 -->
     <div class="product">
-      <img src="https://i.postimg.cc/RF0872dW/Acer-c720p-8-768x768.jpg" alt="Product 8">
-      <h3>Acer C720P | 128GB | 4GB RAM | Touchscreen</h3>
-      <p class="price">Price: 20,000 PKR</p>
+      <img src="https://i.postimg.cc/RF0872dW/Acer-c720p-8-768x768.jpg" />
+      <h3>Acer C720P | 128GB | 4GB RAM | Touch | 8hr Battery</h3>
+      <div class="price">Price: 20000 PKR</div>
       <div class="buttons">
-        <a class="order-btn" href="https://wa.me/923175768178" target="_blank">Order Now</a>
-        <a class="details-btn" href="https://youtu.be/jm89EWFsCgA" target="_blank">View Details</a>
+        <a href="https://wa.me/923175768178" class="order">Order Now</a>
+        <a href="https://youtu.be/jm89EWFsCgA?si=ZISx6Hwfe_ZcsPb_" class="details">View Details</a>
       </div>
     </div>
-
   </div>
 
-  <!-- Live Chat (Tidio) -->
-  <div class="live-chat">
-    <script src="//code.tidio.co/your-tidio-id.js" async></script>
+  <!-- Fixed support buttons -->
+  <div class="fixed-chat">
+    <script src="//code.tidio.co/your-tidio-code.js" async></script>
   </div>
 
-  <!-- WhatsApp Button -->
-  <div class="whatsapp-btn">
-    <a href="https://wa.me/923175768178" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="50" alt="WhatsApp" />
+  <div class="fixed-whatsapp">
+    <a href="https://wa.me/923175768178">
+      <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" />
     </a>
   </div>
 
-  <!-- Bottom Center iPhone Image -->
-  <img src="https://i.postimg.cc/0ydRvW7c/iphone-x-600x598.png" class="bottom-center-img" onclick="window.open('https://dilxtubeby.vercel.app','_blank')" alt="iPhone" />
+  <!-- Bottom center iPhone image -->
+  <div class="bottom-center-img">
+    <a href="https://dilxtubeby.vercel.app" target="_blank">
+      <img src="https://i.postimg.cc/0ydRvW7c/iphone-x-600x598.png" alt="iPhone Shortcut" />
+    </a>
+  </div>
 
 </body>
-  </html>
-  
+</html>
