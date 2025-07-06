@@ -3,101 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wasi Store Chromebooks</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <title>Wasi Chromebook Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right, #e0f7fa, #e3f2fd);
+      background: linear-gradient(to right, #fdfbfb, #ebedee);
     }
     .header {
       text-align: center;
-      margin: 20px 0;
+      padding: 20px 0;
+      background: #0f2027;
+      color: white;
     }
-    .header img {
-      max-width: 200px;
-    }
-    .banner img {
-      width: 100%;
-      height: auto;
-    }
-    .title-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin: 20px 0;
-    }
-    .title-container img {
-      width: 30px;
-    }
-    h1.title {
-      font-size: 24px;
+    .header h1 {
       margin: 0;
+      font-size: 32px;
     }
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      padding: 20px;
+      padding: 30px;
     }
     .product {
       background: white;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       text-align: center;
+      padding: 20px;
+      transition: 0.3s ease;
+    }
+    .product:hover {
+      transform: scale(1.05);
     }
     .product img {
       width: 100%;
-      height: 120px;
+      max-height: 160px;
       object-fit: contain;
-      margin-top: 10px;
       border-radius: 10px;
+    }
+    .product h3 {
+      margin: 15px 0 5px;
     }
     .price {
       color: green;
       font-weight: bold;
-      margin: 10px 0;
+      margin-bottom: 10px;
     }
     .buttons {
       display: flex;
-      gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
+      gap: 10px;
     }
     .buttons a {
-      padding: 8px 12px;
-      border-radius: 5px;
       text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 5px;
       color: white;
       font-weight: bold;
     }
-    .order {
-      background-color: #28a745;
-    }
-    .details {
-      background-color: #007bff;
-    }
-    .chat {
-      background-color: #25D366;
-    }
-    .fixed-chat, .fixed-whatsapp {
+    .btn-order { background: #28a745; }
+    .btn-view { background: #007bff; }
+    .btn-chat { background: #25d366; }
+
+    /* WhatsApp Floating */
+    .whatsapp-float {
       position: fixed;
       bottom: 20px;
-      left: 20px;
+      right: 20px;
       z-index: 999;
     }
-    .bottom-center-img {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 999;
-    }
-    .bottom-center-img img {
-      width: 50px;
+    .whatsapp-float img {
+      width: 55px;
       cursor: pointer;
     }
   </style>
@@ -105,116 +85,110 @@
 <body>
 
   <div class="header">
-    <img src="https://i.postimg.cc/rwTzGj2q/20250618-145136.png" alt="Logo" />
-  </div>
-
-  <div class="banner">
-    <img src="https://i.postimg.cc/J7Bh9v11/Picsart-25-06-18-14-54-11-052.jpg" alt="Banner" />
-  </div>
-
-  <div class="title-container">
-    <img src="https://i.postimg.cc/0ydRvW7c/iphone-x-600x598.png" alt="iPhone">
-    <h1 class="title">CHROMEBOOKS</h1>
+    <h1>📦 Wasi Chromebook Store</h1>
+    <p>Get Your Favorite Chromebooks & SIMs</p>
   </div>
 
   <div class="products">
+    <!-- Product 1 -->
+    <div class="product">
+      <img src="https://i.postimg.cc/dQ94kjzZ/dell-chromebook-laptop-3180-1-768x768.jpg" />
+      <h3>Dell 3180 | 16GB | 4GB RAM</h3>
+      <div class="price">7900 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="btn-order">Order</a>
+        <a href="https://youtu.be/cIP74ZzQ9t4" class="btn-view">View</a>
+        <a href="https://wa.me/923175768178" class="btn-chat">Chat</a>
+      </div>
+    </div>
 
-    <!-- PRODUCT BLOCKS -->
-    <script>
-      const products = [
-        {
-          img: "https://i.postimg.cc/dQ94kjzZ/dell-chromebook-laptop-3180-1-768x768.jpg",
-          title: "Dell | Chromebook 3180 | 16GB | 4GB RAM",
-          price: "7900 PKR",
-          video: "https://youtu.be/cIP74ZzQ9t4?si=pTKZGfIfAHj8Lx-4"
-        },
-        {
-          img: "https://i.postimg.cc/nVkK3cVX/HP-Chromebook-11-G5-1-768x768-1.jpg",
-          title: "HP | Chromebook 11 G5 | 16GB | 4GB RAM",
-          price: "8400 PKR",
-          video: "https://youtu.be/lrqlqKRSTKQ?si=hBDd-f3vFFyqro4e"
-        },
-        {
-          img: "https://i.postimg.cc/pdY0HNMr/Dell-chromebook-p22t-8-768x768-1.jpg",
-          title: "Dell Chromebook 11 | 3120 P22T | 4GB | 16GB",
-          price: "9000 PKR",
-          video: "https://youtu.be/onC5Yog81DQ?si=RV9QYA0Y8p7nFa_e"
-        },
-        {
-          img: "https://i.postimg.cc/yNPgmKZF/Lenovo-chromebook-N21-8-768x768.jpg",
-          title: "Lenovo | N21 | 4GB RAM | 16GB | Webcam | Win 10",
-          price: "9000 PKR",
-          video: "https://youtu.be/7NnM3YO5U3U?si=MrQcGznE5pXkFFb2"
-        },
-        {
-          img: "https://i.postimg.cc/7Z0hM2cv/Hp-chromebook-11-g8-EE-2-768x768.jpg",
-          title: "HP Chromebook 11 G8 EE | 4GB | 32GB | 2027 Updatable",
-          price: "13000 PKR",
-          video: "https://youtu.be/wmOtUUyqEag?si=AjTp8LMC0zidTh7X"
-        },
-        {
-          img: "https://i.postimg.cc/qM5hJ0fR/Lenovo-100e-3rd-gen-10-1-768x768.jpg",
-          title: "Lenovo 100E 3rd Gen | 64GB | 4GB | 2031 Updatable",
-          price: "13600 PKR",
-          video: "https://youtu.be/6elrN8qGFzs?si=r93MVmVRlsqk4fAE"
-        },
-        {
-          img: "https://i.postimg.cc/52k25m92/Lenovo-500-E-4-768x768.jpg",
-          title: "Lenovo 500E 2nd Gen | 2in1 | Touch | 32GB | 4GB",
-          price: "16000 PKR",
-          video: "https://youtu.be/hoq2DEB832A?si=DujTdmmlYtqOfpCt"
-        },
-        {
-          img: "https://i.postimg.cc/RF0872dW/Acer-c720p-8-768x768.jpg",
-          title: "Acer C720P | 128GB | 4GB RAM | Touch | 8hr Battery",
-          price: "20000 PKR",
-          video: "https://youtu.be/jm89EWFsCgA?si=ZISx6Hwfe_ZcsPb_"
-        },
-        {
-          img: "https://i.postimg.cc/NGz9RQLk/images-18.jpg",
-          title: "UK SIM | 3network | for Pakistan",
-          price: "3500 PKR",
-          video: "https://wa.me/+923175768178"
-        },
-        {
-          img: "https://i.postimg.cc/mD0cfSv6/images-19.jpg",
-          title: "UK SIM | only for live | no signal",
-          price: "2300 PKR",
-          video: "https://wa.me/+923175768178"
-        },
-      ];
+    <!-- Product 2 -->
+    <div class="product">
+      <img src="https://i.postimg.cc/nVkK3cVX/HP-Chromebook-11-G5-1-768x768-1.jpg" />
+      <h3>HP 11 G5 | 16GB | 4GB RAM</h3>
+      <div class="price">8400 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="btn-order">Order</a>
+        <a href="https://youtu.be/lrqlqKRSTKQ" class="btn-view">View</a>
+        <a href="https://wa.me/923175768178" class="btn-chat">Chat</a>
+      </div>
+    </div>
 
-      document.write(products.map(p => `
-        <div class="product">
-          <img src="${p.img}" alt="${p.title}" />
-          <h3>${p.title}</h3>
-          <div class="price">Price: ${p.price}</div>
-          <div class="buttons">
-            <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
-            <a href="${p.video}" target="_blank" class="details">View Details</a>
-            <a href="https://wa.me/923175768178" target="_blank" class="chat">Chat</a>
-          </div>
-        </div>
-      `).join(''));
-    </script>
+    <!-- Product 3 -->
+    <div class="product">
+      <img src="https://i.postimg.cc/yNPgmKZF/Lenovo-chromebook-N21-8-768x768.jpg" />
+      <h3>Lenovo N21 | 4GB | 16GB | Win10</h3>
+      <div class="price">9000 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="btn-order">Order</a>
+        <a href="https://youtu.be/7NnM3YO5U3U" class="btn-view">View</a>
+        <a href="https://wa.me/923175768178" class="btn-chat">Chat</a>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product">
+      <img src="https://i.postimg.cc/qM5hJ0fR/Lenovo-100e-3rd-gen-10-1-768x768.jpg" />
+      <h3>Lenovo 100E Gen 3 | 64GB | 4GB</h3>
+      <div class="price">13600 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="btn-order">Order</a>
+        <a href="https://youtu.be/6elrN8qGFzs" class="btn-view">View</a>
+        <a href="https://wa.me/923175768178" class="btn-chat">Chat</a>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="product">
+      <img src="https://i.postimg.cc/52k25m92/Lenovo-500-E-4-768x768.jpg" />
+      <h3>Lenovo 500E | 2in1 | 32GB | Touch</h3>
+      <div class="price">16000 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="btn-order">Order</a>
+        <a href="https://youtu.be/hoq2DEB832A" class="btn-view">View</a>
+        <a href="https://wa.me/923175768178" class="btn-chat">Chat</a>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="product">
+      <img src="https://i.postimg.cc/RF0872dW/Acer-c720p-8-768x768.jpg" />
+      <h3>Acer C720P | 128GB | 4GB | Touch</h3>
+      <div class="price">20000 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="btn-order">Order</a>
+        <a href="https://youtu.be/jm89EWFsCgA" class="btn-view">View</a>
+        <a href="https://wa.me/923175768178" class="btn-chat">Chat</a>
+      </div>
+    </div>
+
+    <!-- SIM 1 -->
+    <div class="product">
+      <img src="https://i.postimg.cc/NGz9RQLk/images-18.jpg" />
+      <h3>UK SIM | 3Network | For Pakistan</h3>
+      <div class="price">3500 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="btn-order">Order</a>
+        <a href="https://wa.me/923175768178" class="btn-chat">Chat</a>
+      </div>
+    </div>
+
+    <!-- SIM 2 -->
+    <div class="product">
+      <img src="https://i.postimg.cc/mD0cfSv6/images-19.jpg" />
+      <h3>UK SIM | Live Only | No Signal</h3>
+      <div class="price">2300 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="btn-order">Order</a>
+        <a href="https://wa.me/923175768178" class="btn-chat">Chat</a>
+      </div>
+    </div>
   </div>
 
-  <!-- Fixed chat -->
-  <div class="fixed-chat">
-    <script src="//code.tidio.co/v6flfnabuyblfkrginqkly19wazdskhc.js" async></script>
-  </div>
-
-  <!-- WhatsApp Button -->
-  <div class="fixed-whatsapp">
+  <!-- WhatsApp floating icon -->
+  <div class="whatsapp-float">
     <a href="https://wa.me/923175768178" target="_blank">
       <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" />
-    </a>
-  </div>
-
-  <!-- Bottom Shortcut -->
-  <div class="bottom-center-img">
-    <a href="https://dilxtubeby.vercel.app" target="_blank">
-      <img src="https://i.postimg.cc/0ydRvW7c/iphone-x-600x598.png" alt="iPhone Shortcut" />
     </a>
   </div>
 
