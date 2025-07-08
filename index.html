@@ -6,246 +6,159 @@
   <title>Wasi Chromebook Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+      padding: 0;
+      box-sizing: border-box;
     }
-    .loader {
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: transparent;
+      color: #333;
+    }
+
+    /* Particle Background */
+    #particles-js {
       position: fixed;
-      z-index: 9999;
-      background: #fff;
       width: 100%;
       height: 100%;
+      z-index: -2;
+      top: 0;
+      left: 0;
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: white;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .loader div {
-      border: 5px solid #00bcd4;
-      border-top: 5px solid transparent;
+
+    .spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #007bff;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       animation: spin 1s linear infinite;
     }
+
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
-    .header {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .header img {
-      max-width: 200px;
-    }
-    .banner img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-    .title-container {
-      text-align: center;
-      margin: 30px 0;
-    }
-    .title-container h1 {
-      font-size: 28px;
-      background: linear-gradient(45deg, #ff9800, #f44336);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .product {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      padding: 15px;
-      text-align: center;
-    }
-    .product:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-    .product img {
-      width: 100%;
-      height: 140px;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-    .product h3 {
-      font-size: 16px;
-      margin: 10px 0;
-    }
-    .price {
-      color: #388e3c;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .buttons a {
-      padding: 8px 14px;
-      border-radius: 5px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .order { background: #4caf50; }
-    .order:hover { background: #43a047; }
-    .details { background: #2196f3; }
-    .details:hover { background: #1976d2; }
-    .fixed-chat {
+
+    .menu {
       position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 999;
-    }
-    .fixed-whatsapp {
-      position: fixed;
-      bottom: 20px;
+      top: 20px;
       right: 20px;
       z-index: 999;
     }
+
+    .menu button {
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .menu-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .menu-content a {
+      color: #007bff;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .menu-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .fixed-chat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 998;
+    }
+
+    .fixed-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 998;
+    }
+
     .fixed-whatsapp img {
       width: 48px;
     }
-    .bottom-center-img {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 999;
+
+    .main-content {
+      padding: 100px 20px 40px;
+      text-align: center;
     }
-    .bottom-center-img img {
-      width: 50px;
-      cursor: pointer;
+
+    h1 {
+      font-size: 32px;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
     }
   </style>
 </head>
-<body onload="document.querySelector('.loader').style.display='none'">
+<body>
 
-  <div class="loader"><div></div></div>
+  <!-- Particle background -->
+  <div id="particles-js"></div>
 
-  <div class="header">
-    <img src="https://i.postimg.cc/rwTzGj2q/20250618-145136.png" alt="Wasi Store Logo">
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
   </div>
 
-  <div class="banner">
-    <img src="https://i.postimg.cc/J7Bh9v11/Picsart-25-06-18-14-54-11-052.jpg" alt="Banner">
-  </div>
-
-  <div class="title-container">
-    <h1>Wasi Chromebook Store - All Products</h1>
-  </div>
-
-  <div class="products">
-    <!-- Chromebook products -->
-    <div class="product">
-      <img src="https://i.postimg.cc/dQ94kjzZ/dell-chromebook-laptop-3180-1-768x768.jpg" />
-      <h3>Dell 3180 | 4GB | 16GB</h3>
-      <div class="price">7900 PKR</div>
-      <div class="buttons">
-        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
-        <a href="https://youtu.be/cIP74ZzQ9t4" class="details">View</a>
-      </div>
-    </div>
-    <div class="product">
-      <img src="https://i.postimg.cc/nVkK3cVX/HP-Chromebook-11-G5-1-768x768-1.jpg" />
-      <h3>HP 11 G5 | 4GB | 16GB</h3>
-      <div class="price">8400 PKR</div>
-      <div class="buttons">
-        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
-        <a href="https://youtu.be/lrqlqKRSTKQ" class="details">View</a>
-      </div>
-    </div>
-    <div class="product">
-      <img src="https://i.postimg.cc/pdY0HNMr/Dell-chromebook-p22t-8-768x768-1.jpg" />
-      <h3>Dell P22T | 3120 | 4GB</h3>
-      <div class="price">9000 PKR</div>
-      <div class="buttons">
-        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
-        <a href="https://youtu.be/onC5Yog81DQ" class="details">View</a>
-      </div>
-    </div>
-    <div class="product">
-      <img src="https://i.postimg.cc/yNPgmKZF/Lenovo-chromebook-N21-8-768x768.jpg" />
-      <h3>Lenovo N21 | Win 10</h3>
-      <div class="price">9000 PKR</div>
-      <div class="buttons">
-        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
-        <a href="https://youtu.be/7NnM3YO5U3U" class="details">View</a>
-      </div>
-    </div>
-    <div class="product">
-      <img src="https://i.postimg.cc/7Z0hM2cv/Hp-chromebook-11-g8-EE-2-768x768.jpg" />
-      <h3>HP G8 EE | 32GB | 2027</h3>
-      <div class="price">13000 PKR</div>
-      <div class="buttons">
-        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
-        <a href="https://youtu.be/wmOtUUyqEag" class="details">View</a>
-      </div>
-    </div>
-    <div class="product">
-      <img src="https://i.postimg.cc/qM5hJ0fR/Lenovo-100e-3rd-gen-10-1-768x768.jpg" />
-      <h3>Lenovo 100E 3rd Gen | 64GB</h3>
-      <div class="price">13600 PKR</div>
-      <div class="buttons">
-        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
-        <a href="https://youtu.be/6elrN8qGFzs" class="details">View</a>
-      </div>
-    </div>
-    <div class="product">
-      <img src="https://i.postimg.cc/52k25m92/Lenovo-500-E-4-768x768.jpg" />
-      <h3>Lenovo 500E | 2in1 | Touch</h3>
-      <div class="price">16000 PKR</div>
-      <div class="buttons">
-        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
-        <a href="https://youtu.be/hoq2DEB832A" class="details">View</a>
-      </div>
-    </div>
-    <div class="product">
-      <img src="https://i.postimg.cc/RF0872dW/Acer-c720p-8-768x768.jpg" />
-      <h3>Acer C720P | 128GB | Touch</h3>
-      <div class="price">20000 PKR</div>
-      <div class="buttons">
-        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
-        <a href="https://youtu.be/jm89EWFsCgA" class="details">View</a>
-      </div>
-    </div>
-
-    <!-- SIM Products -->
-    <div class="product">
-      <img src="https://i.postimg.cc/NGz9RQLk/images-18.jpg" />
-      <h3>UK SIM | 3 Network | Pakistan Use</h3>
-      <div class="price">3500 PKR</div>
-      <div class="buttons">
-        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order</a>
-        <a href="https://wa.me/923175768178" class="details">WhatsApp</a>
-      </div>
-    </div>
-    <div class="product">
-      <img src="https://i.postimg.cc/mD0cfSv6/images-19.jpg" />
-      <h3>UK SIM | Live Use Only</h3>
-      <div class="price">2300 PKR</div>
-      <div class="buttons">
-        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order</a>
-        <a href="https://wa.me/923175768178" class="details">WhatsApp</a>
-      </div>
+  <!-- Menu -->
+  <div class="menu">
+    <button onclick="toggleMenu()">☰</button>
+    <div id="menuContent" class="menu-content">
+      <a href="https://wasismmpannel.online" target="_blank">Wasi SMM Panel</a>
+      <a href="https://chat.whatsapp.com/EAlQ7PDmxkQ6qJXZJHorHv?mode=r_t" target="_blank">Join WhatsApp Group</a>
     </div>
   </div>
 
-  <!-- Live Chat and WhatsApp -->
+  <!-- Main content -->
+  <div class="main-content">
+    <h1>Wasi Chromebook Store</h1>
+    <p>All Chromebooks and SIMs listed below!</p>
+    <!-- You can paste your full product grid HTML here -->
+  </div>
+
+  <!-- Chat widgets -->
   <div class="fixed-chat">
     <script src="//code.tidio.co/v6flfnabuyblfkrginqkly19wazdskhc.js" async></script>
   </div>
@@ -256,11 +169,66 @@
     </a>
   </div>
 
-  <!-- Bottom Shortcut Image -->
-  <div class="bottom-center-img">
-    <a href="https://dilxtubeby.vercel.app" target="_blank">
-      <img src="https://i.postimg.cc/0ydRvW7c/iphone-x-600x598.png" alt="iPhone Shortcut" />
-    </a>
-  </div>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 60,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#00bcd4"
+        },
+        "shape": {
+          "type": "circle"
+        },
+        "opacity": {
+          "value": 0.5
+        },
+        "size": {
+          "value": 4,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#00bcd4",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 4
+        }
+      }
+    });
+
+    // Loader hide
+    window.addEventListener("load", () => {
+      document.getElementById("loader").style.display = "none";
+    });
+
+    // Toggle menu
+    function toggleMenu() {
+      document.getElementById("menuContent").classList.toggle("show");
+    }
+
+    // Hide menu when clicked outside
+    window.onclick = function(event) {
+      if (!event.target.matches('.menu button')) {
+        var dropdowns = document.getElementsByClassName("menu-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          if (dropdowns[i].classList.contains('show')) {
+            dropdowns[i].classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>
