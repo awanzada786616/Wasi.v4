@@ -7,12 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Poppins',sans-serif; color:#fff; overflow-x:hidden; }
+    body { font-family:'Poppins',sans-serif; color:#fff; overflow-x:hidden; background:#000; }
     canvas#particles-js { position:fixed; width:100%; height:100%; z-index:-1; top:0; left:0; }
 
     .loader {
-      position:fixed;inset:0;
-      background:#000; display:flex;align-items:center;justify-content:center;
+      position:fixed; inset:0;
+      background:#000; display:flex; align-items:center; justify-content:center;
       z-index:10000;
     }
     .loader::after {
@@ -22,7 +22,7 @@
       animation:pulse 1s infinite;
     }
     @keyframes pulse {
-      0%,100%{opacity:0.5}50%{opacity:1}
+      0%,100%{opacity:0.5} 50%{opacity:1}
     }
 
     .menu {
@@ -47,7 +47,18 @@
     .banner img { width:100%; height:auto; border-radius:10px; }
 
     .title-container {
-      text-align:center; margin:30px 0; font-size:2em; color:#00e5ff;
+      text-align:center; margin:30px 0 10px; font-size:2em; color:#00e5ff;
+    }
+
+    .search-container {
+      text-align:center;
+      margin-bottom: 20px;
+    }
+    .search-container input {
+      padding:10px; width:80%; max-width:400px;
+      border-radius:5px; border:none;
+      outline:none;
+      font-size:16px;
     }
 
     .products {
@@ -71,7 +82,7 @@
       font-weight:bold; color:#76ff03; margin:10px 0;
     }
     .buttons {
-      display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
+      display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
     }
     .buttons a {
       padding:8px 12px; border-radius:5px;
@@ -111,6 +122,7 @@
     <div class="dropdown" id="dropdown">
       <a href="https://wasismmpannel.online" target="_blank">Wasi SMM Panel</a>
       <a href="https://chat.whatsapp.com/EAlQ7PDmxkQ6qJXZJHorHv?mode=r_t" target="_blank">WhatsApp Group</a>
+      <a href="https://www.youtube.com/@awaishaidermunara" target="_blank">YouTube Channel</a>
     </div>
   </div>
 
@@ -124,90 +136,113 @@
 
   <div class="title-container"><h1>CHROMEBOOKS & UK SIMs</h1></div>
 
-  <div class="products">
-    <!-- Start of Product List -->
+  <!-- 🔍 Search Input -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search products...">
+  </div>
+
+  <div class="products" id="productGrid">
+  
     <div class="product">
-      <img src="https://i.postimg.cc/dQ94kjzZ/dell-chromebook-laptop-3180-1-768x768.jpg"/>
-      <h3>Dell Chromebook 3180</h3><div class="price">7900 PKR</div>
+      <img src="https://i.postimg.cc/dQ94kjzZ/dell-chromebook-laptop-3180-1-768x768.jpg" alt="Dell Chromebook 3180" />
+      <h3>Dell Chromebook 3180</h3>
+      <div class="price">7900 PKR</div>
       <div class="buttons">
         <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
         <a href="https://youtu.be/cIP74ZzQ9t4" class="details">View Details</a>
       </div>
     </div>
+
     <div class="product">
-      <img src="https://i.postimg.cc/nVkK3cVX/HP-Chromebook-11-G5-1-768x768-1.jpg"/>
-      <h3>HP Chromebook 11 G5</h3><div class="price">8400 PKR</div>
+      <img src="https://i.postimg.cc/nVkK3cVX/HP-Chromebook-11-G5-1-768x768-1.jpg" alt="HP Chromebook 11 G5" />
+      <h3>HP Chromebook 11 G5</h3>
+      <div class="price">8400 PKR</div>
       <div class="buttons">
         <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
         <a href="https://youtu.be/lrqlqKRSTKQ" class="details">View Details</a>
       </div>
     </div>
+
     <div class="product">
-      <img src="https://i.postimg.cc/pdY0HNMr/Dell-chromebook-p22t-8-768x768-1.jpg"/>
-      <h3>Dell Chromebook P22T (3120)</h3><div class="price">9000 PKR</div>
+      <img src="https://i.postimg.cc/pdY0HNMr/Dell-chromebook-p22t-8-768x768-1.jpg" alt="Dell Chromebook P22T (3120)" />
+      <h3>Dell Chromebook P22T (3120)</h3>
+      <div class="price">9000 PKR</div>
       <div class="buttons">
         <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
         <a href="https://youtu.be/onC5Yog81DQ" class="details">View Details</a>
       </div>
     </div>
+
     <div class="product">
-      <img src="https://i.postimg.cc/yNPgmKZF/Lenovo-chromebook-N21-8-768x768.jpg"/>
-      <h3>Lenovo Chromebook N21</h3><div class="price">9000 PKR</div>
+      <img src="https://i.postimg.cc/yNPgmKZF/Lenovo-chromebook-N21-8-768x768.jpg" alt="Lenovo Chromebook N21" />
+      <h3>Lenovo Chromebook N21</h3>
+      <div class="price">9000 PKR</div>
       <div class="buttons">
         <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
         <a href="https://youtu.be/7NnM3YO5U3U" class="details">View Details</a>
       </div>
     </div>
+
     <div class="product">
-      <img src="https://i.postimg.cc/7Z0hM2cv/Hp-chromebook-11-g8-EE-2-768x768.jpg"/>
-      <h3>HP Chromebook 11 G8 EE</h3><div class="price">13000 PKR</div>
-    <div class="buttons">
+      <img src="https://i.postimg.cc/7Z0hM2cv/Hp-chromebook-11-g8-EE-2-768x768.jpg" alt="HP Chromebook 11 G8 EE" />
+      <h3>HP Chromebook 11 G8 EE</h3>
+      <div class="price">13000 PKR</div>
+      <div class="buttons">
         <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
         <a href="https://youtu.be/wmOtUUyqEag" class="details">View Details</a>
+      </div>
     </div>
-    </div>
+
     <div class="product">
-      <img src="https://i.postimg.cc/qM5hJ0fR/Lenovo-100e-3rd-gen-10-1-768x768.jpg"/>
-      <h3>Lenovo 100E 3rd Gen</h3><div class="price">13600 PKR</div>
+      <img src="https://i.postimg.cc/qM5hJ0fR/Lenovo-100e-3rd-gen-10-1-768x768.jpg" alt="Lenovo 100E 3rd Gen" />
+      <h3>Lenovo 100E 3rd Gen</h3>
+      <div class="price">13600 PKR</div>
       <div class="buttons">
         <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
         <a href="https://youtu.be/6elrN8qGFzs" class="details">View Details</a>
       </div>
     </div>
+
     <div class="product">
-      <img src="https://i.postimg.cc/52k25m92/Lenovo-500-E-4-768x768.jpg"/>
-      <h3>Lenovo 500E 2nd Gen</h3><div class="price">16000 PKR</div>
+      <img src="https://i.postimg.cc/52k25m92/Lenovo-500-E-4-768x768.jpg" alt="Lenovo 500E 2nd Gen" />
+      <h3>Lenovo 500E 2nd Gen</h3>
+      <div class="price">16000 PKR</div>
       <div class="buttons">
         <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
         <a href="https://youtu.be/hoq2DEB832A" class="details">View Details</a>
       </div>
     </div>
+
     <div class="product">
-      <img src="https://i.postimg.cc/RF0872dW/Acer-c720p-8-768x768.jpg"/>
-      <h3>Acer C720P Touch</h3><div class="price">20000 PKR</div>
+      <img src="https://i.postimg.cc/RF0872dW/Acer-c720p-8-768x768.jpg" alt="Acer C720P Touch" />
+      <h3>Acer C720P Touch</h3>
+      <div class="price">20000 PKR</div>
       <div class="buttons">
         <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
         <a href="https://youtu.be/jm89EWFsCgA" class="details">View Details</a>
       </div>
     </div>
+
     <div class="product">
-      <img src="https://i.postimg.cc/NGz9RQLk/images-18.jpg"/>
-      <h3>UK SIM – 3 Network for Pakistan</h3><div class="price">3500 PKR</div>
+      <img src="https://i.postimg.cc/NGz9RQLk/images-18.jpg" alt="UK SIM – 3 Network" />
+      <h3>UK SIM – 3 Network for Pakistan</h3>
+      <div class="price">3500 PKR</div>
       <div class="buttons">
         <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
         <a href="https://wa.me/923175768178" class="details">WhatsApp</a>
       </div>
     </div>
+
     <div class="product">
-      <img src="https://i.postimg.cc/mD0cfSv6/images-19.jpg"/>
-      <h3>UK SIM – Live Use Only</h3><div class="price">2300 PKR</div>
+      <img src="https://i.postimg.cc/mD0cfSv6/images-19.jpg" alt="UK SIM – Live Use Only" />
+      <h3>UK SIM – Live Use Only</h3>
+      <div class="price">2300 PKR</div>
       <div class="buttons">
         <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
         <a href="https://wa.me/923175768178" class="details">WhatsApp</a>
       </div>
     </div>
-    <!-- End Product List -->
-  </div>
+  </div> <!-- End of products -->
 
   <div class="fixed-whatsapp">
     <a href="https://wa.me/923175768178" target="_blank">
@@ -249,12 +284,22 @@
     });
 
     function toggleMenu() {
-      document.getElementById('dropdown').style.display =
-        document.getElementById('dropdown').style.display==='block' ? 'none' : 'block';
+      const menu = document.getElementById('dropdown');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
 
     window.addEventListener('load', () => {
       document.getElementById('loader').style.display = 'none';
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.toLowerCase();
+      const products = document.querySelectorAll('.product');
+      products.forEach(product => {
+        const name = product.querySelector('h3').innerText.toLowerCase();
+        product.style.display = name.includes(filter) ? 'block' : 'none';
+      });
     });
   </script>
 
