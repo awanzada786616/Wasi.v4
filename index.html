@@ -5,112 +5,220 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wasi Chromebook Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Poppins',sans-serif; color:#fff; overflow-x:hidden; background:#000; }
-    canvas#particles-js { position:fixed; width:100%; height:100%; z-index:-1; top:0; left:0; }
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    .loader {
-      position:fixed; inset:0;
-      background:#000; display:flex; align-items:center; justify-content:center;
-      z-index:10000;
-    }
-    .loader::after {
-      content:"Loading...";
-      color:#00e5ff;
-      font-size:24px;
-      animation:pulse 1s infinite;
-    }
-    @keyframes pulse {
-      0%,100%{opacity:0.5} 50%{opacity:1}
-    }
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    background: #0d0d0d; /* pure dark background */
+    overflow-x: hidden;
+  }
 
-    .menu {
-      position:fixed; top:20px; right:20px; z-index:999;
-    }
-    .menu button {
-      background:none; border:none; font-size:28px; color:#00e5ff; cursor:pointer;
-    }
-    .dropdown {
-      display:none; position:absolute; right:0;
-      background:rgba(0,0,0,0.85); border-radius:6px; overflow:hidden; margin-top:8px;
-    }
-    .dropdown a {
-      display:block; padding:12px 18px; text-decoration:none;
-      color:#00e5ff; font-weight:bold;
-    }
-    .dropdown a:hover { background:rgba(0,229,255,0.1); }
+  canvas#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
 
-    .header { text-align:center; margin:80px 0 20px; }
-    .header img { max-width:200px; }
+  .loader {
+    position: fixed;
+    inset: 0;
+    background: #0d0d0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  }
 
-    .banner img { width:100%; height:auto; border-radius:10px; }
+  .loader::after {
+    content: "Loading...";
+    color: #00e5ff;
+    font-size: 24px;
+    animation: pulse 1s infinite;
+  }
 
-    .title-container {
-      text-align:center; margin:30px 0 10px; font-size:2em; color:#00e5ff;
-    }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
 
-    .search-container {
-      text-align:center;
-      margin-bottom: 20px;
-    }
-    .search-container input {
-      padding:10px; width:80%; max-width:400px;
-      border-radius:5px; border:none;
-      outline:none;
-      font-size:16px;
-    }
+  .menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+  }
 
-    .products {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-      gap:20px; padding:20px;
-    }
-    .product {
-      background:rgba(255,255,255,0.05);
-      border:1px solid #00e5ff;
-      border-radius:10px;
-      padding:15px;
-      text-align:center;
-      transition:transform .3s;
-    }
-    .product:hover { transform:translateY(-5px); }
-    .product img {
-      width:100%; height:120px; object-fit:contain; border-radius:6px;
-    }
-    .price {
-      font-weight:bold; color:#76ff03; margin:10px 0;
-    }
-    .buttons {
-      display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
-    }
-    .buttons a {
-      padding:8px 12px; border-radius:5px;
-      font-weight:bold; text-decoration:none; color:#fff;
-      transition:transform .2s;
-    }
-    .order { background-color:#43a047; }
-    .details { background-color:#1e88e5; }
-    .buttons a:hover { transform:scale(1.05); }
+  .menu button {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #00e5ff;
+    cursor: pointer;
+  }
 
-    .fixed-whatsapp {
-      position:fixed; bottom:20px; left:20px; z-index:999;
-    }
-    .fixed-whatsapp img { width:50px; }
+  .dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #1a1a1a;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
 
-    .fixed-tidio {
-      position:fixed; bottom:20px; right:20px; z-index:999;
-    }
+  .dropdown a {
+    display: block;
+    padding: 12px 18px;
+    text-decoration: none;
+    color: #00e5ff;
+    font-weight: bold;
+  }
 
-    .bottom-center-img {
-      position:fixed; bottom:0; left:50%;
-      transform:translateX(-50%);
-      z-index:999;
-    }
-    .bottom-center-img img {
-      width:50px; cursor:pointer;
-    }
-  </style>
+  .dropdown a:hover {
+    background: rgba(0, 229, 255, 0.1);
+  }
+
+  .header {
+    text-align: center;
+    margin: 80px 0 20px;
+  }
+
+  .header img {
+    max-width: 200px;
+  }
+
+  .banner img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .title-container {
+    text-align: center;
+    margin: 30px 0 10px;
+    font-size: 2em;
+    color: #00e5ff;
+  }
+
+  .search-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .search-container input {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: #1f1f1f;
+    color: #fff;
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .product {
+    background: #121212;
+    border: 1px solid #00e5ff;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform .3s, box-shadow .3s;
+  }
+
+  .product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+  }
+
+  .product img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .price {
+    font-weight: bold;
+    color: #76ff03;
+    margin: 10px 0;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .buttons a {
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    transition: transform .2s;
+  }
+
+  .order {
+    background-color: #43a047;
+  }
+
+  .details {
+    background-color: #1e88e5;
+  }
+
+  .buttons a:hover {
+    transform: scale(1.05);
+  }
+
+  .fixed-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999;
+  }
+
+  .fixed-whatsapp img {
+    width: 50px;
+  }
+
+  .fixed-tidio {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+  }
+
+  .bottom-center-img {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+  }
+
+  .bottom-center-img img {
+    width: 50px;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
 
