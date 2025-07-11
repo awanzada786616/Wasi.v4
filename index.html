@@ -5,224 +5,168 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wasi Chromebook Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Poppins', sans-serif;
-    color: #f0f0f0;
-    background: #1a1a1a; /* Dark charcoal */
-    overflow-x: hidden;
-  }
-
-  canvas#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    top: 0;
-    left: 0;
-  }
-
-  .loader {
-    position: fixed;
-    inset: 0;
-    background: #1a1a1a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-  }
-
-  .loader::after {
-    content: "Loading...";
-    color: #00e5ff;
-    font-size: 24px;
-    animation: pulse 1s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-  }
-
-  .menu {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 999;
-  }
-
-  .menu button {
-    background: none;
-    border: none;
-    font-size: 28px;
-    color: #00e5ff;
-    cursor: pointer;
-  }
-
-  .dropdown {
-    display: none;
-    position: absolute;
-    right: 0;
-    background: #2a2a2a;
-    border-radius: 6px;
-    overflow: hidden;
-    margin-top: 8px;
-  }
-
-  .dropdown a {
-    display: block;
-    padding: 12px 18px;
-    text-decoration: none;
-    color: #00e5ff;
-    font-weight: bold;
-  }
-
-  .dropdown a:hover {
-    background: rgba(0, 229, 255, 0.1);
-  }
-
-  .header {
-    text-align: center;
-    margin: 80px 0 20px;
-  }
-
-  .header img {
-    max-width: 200px;
-  }
-
-  .banner img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-
-  .title-container {
-    text-align: center;
-    margin: 30px 0 10px;
-    font-size: 2em;
-    color: #00e5ff;
-  }
-
-  .search-container {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .search-container input {
-    padding: 10px;
-    width: 80%;
-    max-width: 400px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    outline: none;
-    background-color: #2b2b2b;
-    color: #fff;
-  }
-
-  .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .product {
-    background: linear-gradient(145deg, #3a3a3a, #2a2a2a); /* silver + dark effect */
-    border: 1px solid #888;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 0 5px rgba(255,255,255,0.1);
-  }
-
-  .product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
-  }
-
-  .product img {
-    width: 100%;
-    height: 120px;
-    object-fit: contain;
-    border-radius: 6px;
-    background: #fff;
-  }
-
-  .price {
-    font-weight: bold;
-    color: #76ff03;
-    margin: 10px 0;
-  }
-
-  .buttons {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .buttons a {
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #fff;
-    transition: transform 0.2s;
-  }
-
-  .order {
-    background-color: #43a047;
-  }
-
-  .details {
-    background-color: #1e88e5;
-  }
-
-  .buttons a:hover {
-    transform: scale(1.05);
-  }
-
-  .fixed-whatsapp {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 999;
-  }
-
-  .fixed-whatsapp img {
-    width: 50px;
-  }
-
-  .fixed-tidio {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-  }
-
-  .bottom-center-img {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-  }
-
-  .bottom-center-img img {
-    width: 50px;
-    cursor: pointer;
-  }
-</style>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #f0f0f0;
+      background: #121212;
+      overflow-x: hidden;
+    }
+    canvas#particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: #121212;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    .loader::after {
+      content: "Loading...";
+      color: #00e5ff;
+      font-size: 24px;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    .menu {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    .menu button {
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: #00e5ff;
+      cursor: pointer;
+    }
+    .dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: #222;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .dropdown a {
+      display: block;
+      padding: 12px 18px;
+      text-decoration: none;
+      color: #00e5ff;
+      font-weight: bold;
+    }
+    .dropdown a:hover {
+      background: rgba(0, 229, 255, 0.1);
+    }
+    .header { text-align: center; margin: 80px 0 20px; }
+    .header img { max-width: 200px; }
+    .banner img { width: 100%; height: auto; border-radius: 10px; }
+    .title-container {
+      text-align: center;
+      margin: 30px 0 10px;
+      font-size: 2em;
+      color: #00e5ff;
+    }
+    .search-container { text-align: center; margin-bottom: 20px; }
+    .search-container input {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 5px;
+      border: 1px solid #888;
+      outline: none;
+      background-color: #1f1f1f;
+      color: #fff;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      background: linear-gradient(145deg, #2f2f2f, #1d1d1d);
+      border: 1px solid #666;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255,255,255,0.05);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+    }
+    .product img {
+      width: 100%;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .price {
+      font-weight: bold;
+      color: #76ff03;
+      margin: 10px 0;
+    }
+    .buttons {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .buttons a {
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+      transition: transform .2s;
+    }
+    .order { background-color: #43a047; }
+    .details { background-color: #1e88e5; }
+    .buttons a:hover { transform: scale(1.05); }
+    .fixed-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 999;
+    }
+    .fixed-whatsapp img { width: 50px; }
+    .fixed-tidio {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    .bottom-center-img {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+    }
+    .bottom-center-img img {
+      width: 50px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-
   <canvas id="particles-js"></canvas>
   <div class="loader" id="loader"></div>
 
@@ -245,13 +189,12 @@
 
   <div class="title-container"><h1>CHROMEBOOKS & UK SIMs</h1></div>
 
-  <!-- 🔍 Search Input -->
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search products...">
   </div>
 
   <div class="products" id="productGrid">
-  
+
     <div class="product">
       <img src="https://i.postimg.cc/dQ94kjzZ/dell-chromebook-laptop-3180-1-768x768.jpg" alt="Dell Chromebook 3180" />
       <h3>Dell Chromebook 3180</h3>
@@ -351,8 +294,8 @@
         <a href="https://wa.me/923175768178" class="details">WhatsApp</a>
       </div>
     </div>
-  </div> <!-- End of products -->
 
+  </div> <!-- End products -->
   <div class="fixed-whatsapp">
     <a href="https://wa.me/923175768178" target="_blank">
       <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"/>
@@ -373,23 +316,26 @@
   <script>
     particlesJS('particles-js', {
       particles: {
-        number: { value:60, density:{ enable:true, value_area:800 }},
-        color: { value:'#00e5ff' },
-        shape: { type:'circle' },
-        opacity: { value:0.5 },
-        size: { value:3, random:true },
-        line_linked: { enable:true, distance:150, color:'#00e5ff', opacity:0.4, width:1 },
-        move: { enable:true, speed:3 }
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: '#00e5ff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5 },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#00e5ff', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 3 }
       },
       interactivity: {
-        detect_on:'canvas',
+        detect_on: 'canvas',
         events: {
-          onhover:{ enable:true, mode:'repulse' },
-          onclick:{ enable:true, mode:'push' }
+          onhover: { enable: true, mode: 'repulse' },
+          onclick: { enable: true, mode: 'push' }
         },
-        modes:{ repulse:{ distance:100 }, push:{ particles_nb:4 }}
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 4 }
+        }
       },
-      retina_detect:true
+      retina_detect: true
     });
 
     function toggleMenu() {
