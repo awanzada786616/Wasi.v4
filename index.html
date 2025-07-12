@@ -4,11 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wasi Chromebook Store</title>
-
-  <!-- ✅ Correct Google Font Link -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
-
-  <!-- ✅ Complete Style CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -17,7 +13,6 @@
       background: #121212;
       overflow-x: hidden;
     }
-
     canvas#particles-js {
       position: fixed;
       width: 100%;
@@ -26,7 +21,6 @@
       top: 0;
       left: 0;
     }
-
     .loader {
       position: fixed;
       inset: 0;
@@ -46,7 +40,6 @@
       0%, 100% { opacity: 0.5; }
       50% { opacity: 1; }
     }
-
     .menu {
       position: fixed;
       top: 20px;
@@ -60,7 +53,6 @@
       color: #00e5ff;
       cursor: pointer;
     }
-
     .dropdown {
       display: none;
       position: absolute;
@@ -80,27 +72,16 @@
     .dropdown a:hover {
       background: rgba(0, 229, 255, 0.1);
     }
-
     .header { text-align: center; margin: 80px 0 20px; }
     .header img { max-width: 200px; }
-
-    .banner img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
+    .banner img { width: 100%; height: auto; border-radius: 10px; }
     .title-container {
       text-align: center;
       margin: 30px 0 10px;
       font-size: 2em;
       color: #00e5ff;
     }
-
-    .search-container {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+    .search-container { text-align: center; margin-bottom: 20px; }
     .search-container input {
       padding: 10px;
       width: 80%;
@@ -111,13 +92,12 @@
       background-color: #1f1f1f;
       color: #fff;
     }
-        .products {
+    .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       padding: 20px;
     }
-
     .product {
       background: linear-gradient(145deg, #2f2f2f, #1d1d1d);
       border: 1px solid #666;
@@ -127,12 +107,10 @@
       box-shadow: 0 0 10px rgba(255,255,255,0.05);
       transition: transform .3s, box-shadow .3s;
     }
-
     .product:hover {
       transform: translateY(-5px);
       box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
     }
-
     .product img {
       width: 100%;
       height: 120px;
@@ -140,20 +118,17 @@
       border-radius: 6px;
       background: #fff;
     }
-
     .price {
       font-weight: bold;
       color: #76ff03;
       margin: 10px 0;
     }
-
     .buttons {
       display: flex;
       gap: 8px;
       justify-content: center;
       flex-wrap: wrap;
     }
-
     .buttons a {
       padding: 8px 12px;
       border-radius: 5px;
@@ -162,30 +137,22 @@
       color: #fff;
       transition: transform .2s;
     }
-
     .order { background-color: #43a047; }
     .details { background-color: #1e88e5; }
-
-    .buttons a:hover {
-      transform: scale(1.05);
-    }
-
+    .buttons a:hover { transform: scale(1.05); }
     .fixed-whatsapp {
       position: fixed;
       bottom: 20px;
       left: 20px;
       z-index: 999;
     }
-
     .fixed-whatsapp img { width: 50px; }
-
     .fixed-tidio {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 999;
     }
-
     .bottom-center-img {
       position: fixed;
       bottom: 0;
@@ -193,105 +160,16 @@
       transform: translateX(-50%);
       z-index: 999;
     }
-
     .bottom-center-img img {
       width: 50px;
       cursor: pointer;
     }
-
-    /* 🎞️ Banner Slider */
-    .carousel-container {
-      position: relative;
-      max-width: 100%;
-      overflow: hidden;
-      margin: 15px auto;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
-    }
-
-    .carousel {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      width: 300%; /* 3 slides */
-    }
-
-    .slide {
-      width: 100%;
-      flex-shrink: 0;
-    }
-
-    .slide img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .prev, .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0,0,0,0.4);
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      font-size: 20px;
-      border-radius: 50%;
-    }
-
-    .prev { left: 10px; }
-    .next { right: 10px; }
-
-    .prev:hover, .next:hover {
-      background-color: rgba(0,0,0,0.6);
-    }
   </style>
 </head>
 <body>
-
-  <!-- 🔝 TOP SOCIAL LOGO BAR -->
-  <div style="background: #1f1f1f; padding: 10px; text-align: center;">
-    <a href="https://facebook.com" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" style="height:28px; margin: 0 10px;">
-    </a>
-    <a href="https://instagram.com" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" style="height:28px; margin: 0 10px;">
-    </a>
-    <a href="https://wa.me/923175768178" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="height:28px; margin: 0 10px;">
-    </a>
-    <a href="https://youtube.com" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" style="height:28px; margin: 0 10px;">
-    </a>
-  </div>
-
-  <!-- 🎞️ BANNER SLIDER -->
-  <div class="carousel-container">
-    <div class="carousel">
-      <div class="slide">
-        <img src="https://i.postimg.cc/fLszzYDK/20250712-111130.jpg" alt="Banner 1" />
-      </div>
-      <div class="slide">
-        <img src="https://i.postimg.cc/mDSbthrG/20250712-111423.jpg" alt="Banner 2" />
-      </div>
-      <div class="slide">
-        <img src="https://i.postimg.cc/KjqxDVLq/20250712-111651.jpg" alt="Banner 3" />
-      </div>
-      <div class="slide">
-        <img src="https://i.postimg.cc/ZKnT5bt1/20250712-111941.jpg" alt="Banner 4" />
-      </div>
-    </div>
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
-  </div>
-
-  <!-- 🔆 Background Animation -->
   <canvas id="particles-js"></canvas>
-
-  <!-- 🔄 Loading Animation -->
   <div class="loader" id="loader"></div>
 
-  <!-- ☰ Dropdown Menu -->
   <div class="menu">
     <button onclick="toggleMenu()">☰</button>
     <div class="dropdown" id="dropdown">
@@ -301,26 +179,22 @@
     </div>
   </div>
 
-  <!-- 🏪 Logo -->
   <div class="header">
     <img src="https://i.postimg.cc/rwTzGj2q/20250618-145136.png" alt="Wasi Logo"/>
   </div>
 
-  <!-- 🏷️ Store Banner -->
   <div class="banner">
     <img src="https://i.postimg.cc/J7Bh9v11/Picsart-25-06-18-14-54-11-052.jpg" alt="Store Banner"/>
   </div>
 
-  <!-- 🔍 Search + Title -->
   <div class="title-container"><h1>CHROMEBOOKS & UK SIMs</h1></div>
 
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search products...">
   </div>
 
-  <!-- 🛍️ Product Grid Start -->
   <div class="products" id="productGrid">
-      <!-- 🖥️ Product 1 -->
+
     <div class="product">
       <img src="https://i.postimg.cc/dQ94kjzZ/dell-chromebook-laptop-3180-1-768x768.jpg" alt="Dell Chromebook 3180" />
       <h3>Dell Chromebook 3180</h3>
@@ -331,7 +205,6 @@
       </div>
     </div>
 
-    <!-- 🖥️ Product 2 -->
     <div class="product">
       <img src="https://i.postimg.cc/nVkK3cVX/HP-Chromebook-11-G5-1-768x768-1.jpg" alt="HP Chromebook 11 G5" />
       <h3>HP Chromebook 11 G5</h3>
@@ -342,30 +215,103 @@
       </div>
     </div>
 
-    <!-- آپ کے باقی Products اسی طرح یہاں Add ہوں گے... -->
+    <div class="product">
+      <img src="https://i.postimg.cc/pdY0HNMr/Dell-chromebook-p22t-8-768x768-1.jpg" alt="Dell Chromebook P22T (3120)" />
+      <h3>Dell Chromebook P22T (3120)</h3>
+      <div class="price">9000 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
+        <a href="https://youtu.be/onC5Yog81DQ" class="details">View Details</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.postimg.cc/yNPgmKZF/Lenovo-chromebook-N21-8-768x768.jpg" alt="Lenovo Chromebook N21" />
+      <h3>Lenovo Chromebook N21</h3>
+      <div class="price">9000 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
+        <a href="https://youtu.be/7NnM3YO5U3U" class="details">View Details</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.postimg.cc/7Z0hM2cv/Hp-chromebook-11-g8-EE-2-768x768.jpg" alt="HP Chromebook 11 G8 EE" />
+      <h3>HP Chromebook 11 G8 EE</h3>
+      <div class="price">13000 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
+        <a href="https://youtu.be/wmOtUUyqEag" class="details">View Details</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.postimg.cc/qM5hJ0fR/Lenovo-100e-3rd-gen-10-1-768x768.jpg" alt="Lenovo 100E 3rd Gen" />
+      <h3>Lenovo 100E 3rd Gen</h3>
+      <div class="price">13600 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
+        <a href="https://youtu.be/6elrN8qGFzs" class="details">View Details</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.postimg.cc/52k25m92/Lenovo-500-E-4-768x768.jpg" alt="Lenovo 500E 2nd Gen" />
+      <h3>Lenovo 500E 2nd Gen</h3>
+      <div class="price">16000 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
+        <a href="https://youtu.be/hoq2DEB832A" class="details">View Details</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.postimg.cc/RF0872dW/Acer-c720p-8-768x768.jpg" alt="Acer C720P Touch" />
+      <h3>Acer C720P Touch</h3>
+      <div class="price">20000 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
+        <a href="https://youtu.be/jm89EWFsCgA" class="details">View Details</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.postimg.cc/NGz9RQLk/images-18.jpg" alt="UK SIM – 3 Network" />
+      <h3>UK SIM – 3 Network for Pakistan</h3>
+      <div class="price">3500 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
+        <a href="https://wa.me/923175768178" class="details">WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://i.postimg.cc/mD0cfSv6/images-19.jpg" alt="UK SIM – Live Use Only" />
+      <h3>UK SIM – Live Use Only</h3>
+      <div class="price">2300 PKR</div>
+      <div class="buttons">
+        <a href="https://checkoutwasixstorepk.vercel.app/" class="order">Order Now</a>
+        <a href="https://wa.me/923175768178" class="details">WhatsApp</a>
+      </div>
+    </div>
 
   </div> <!-- End products -->
-
-  <!-- 📞 Fixed WhatsApp -->
   <div class="fixed-whatsapp">
     <a href="https://wa.me/923175768178" target="_blank">
       <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"/>
     </a>
   </div>
 
-  <!-- 💬 Tidio Chat -->
   <div class="fixed-tidio">
     <script src="//code.tidio.co/v6flfnabuyblfkrginqkly19wazdskhc.js" async></script>
   </div>
 
-  <!-- 📱 Bottom iPhone Icon -->
   <div class="bottom-center-img">
     <a href="https://dilxtubeby.vercel.app" target="_blank">
       <img src="https://i.postimg.cc/0ydRvW7c/iphone-x-600x598.png" />
     </a>
   </div>
 
-  <!-- 🔮 Particle Animation -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     particlesJS('particles-js', {
@@ -410,23 +356,7 @@
         product.style.display = name.includes(filter) ? 'block' : 'none';
       });
     });
-
-    // 🎞️ Slider Navigation
-    const carousel = document.querySelector('.carousel');
-    let slideIndex = 0;
-    const totalSlides = carousel.children.length;
-
-    document.querySelector('.next').addEventListener('click', () => {
-      slideIndex = (slideIndex + 1) % totalSlides;
-      carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
-    });
-
-    document.querySelector('.prev').addEventListener('click', () => {
-      slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
-      carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
-    });
   </script>
 
 </body>
 </html>
-
